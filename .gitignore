@@ -1,0 +1,6 @@
+.vscode/
+.idea/
+bin/
+lib/
+cmake-build-debug/
+Linux_x86_64/
