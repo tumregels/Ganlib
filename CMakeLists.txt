@@ -60,11 +60,20 @@ endif ()
 message("CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE}")
 
 # Create static library
-add_library(lib STATIC ${GANLIB_SRC_FILES})
-set_target_properties(lib PROPERTIES
+add_library(libStatic STATIC ${GANLIB_SRC_FILES})
+set_target_properties(libStatic PROPERTIES
         LINKER_LANGUAGE Fortran
         OUTPUT_NAME Ganlib
         ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/${OS_ARCHITECTURE}
+        Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/${OS_ARCHITECTURE}/modules
+        )
+
+# Create shared library
+add_library(libShared SHARED ${GANLIB_SRC_FILES})
+set_target_properties(libShared PROPERTIES
+        LINKER_LANGUAGE C
+        OUTPUT_NAME Ganlib
+        LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/${OS_ARCHITECTURE}
         Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/${OS_ARCHITECTURE}/modules
         )
 
@@ -75,4 +84,4 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin/${OS_ARCHITECTURE}
         Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/${OS_ARCHITECTURE}/modules
         )
-target_link_libraries(${PROJECT_NAME} lib)
+target_link_libraries(${PROJECT_NAME} libStatic)

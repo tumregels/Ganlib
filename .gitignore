@@ -2,5 +2,5 @@
 .idea/
 bin/
 lib/
-cmake-build-debug/
+build/
 Linux_x86_64/

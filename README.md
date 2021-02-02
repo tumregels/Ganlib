@@ -2,12 +2,12 @@
 
 Initialize cmake project
 
-    $ mkdir -p cmake-build-debug
-	$ cd cmake-build-debug && cmake -DCMAKE_BUILD_TYPE=Debug .. && cd ..
+    $ mkdir -p build
+	$ cd build && cmake -DCMAKE_BUILD_TYPE=Debug .. && cd ..
 
 Build/rebuild all targets
 
-	$ cmake --build cmake-build-debug --target all
+	$ cmake --build build --target all
 	
 Check Ganlib binary
 
