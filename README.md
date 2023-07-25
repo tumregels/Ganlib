@@ -12,3 +12,11 @@ Build/rebuild all targets
 Check Ganlib binary
 
     $ make tests
+
+To check the *.so file content
+
+    nm -D --defined-only /path/to/libGanlib.so
+
+To check the *.a file content
+
+    ar -t /path/to/libGanlib.a
